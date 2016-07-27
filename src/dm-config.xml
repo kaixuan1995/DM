@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<insert>
+		<!-- <vo name="Student"> <property name="s_name" /> <property name="s_name" 
+			/> <property name="s_addr" /> </vo> -->
+		<insertOperation methodName="addStudent">insert into t_student(id,s_name,s_addr) values(?,?,?) </insertOperation>
+	</insert>
+	
+	<delete>
+		<deleteOperation methodName="deleteStudentByName">delete stu from t_student stu where stu.s_name=?</deleteOperation>
+	</delete>
+
+	<update>
+		<updateOperation methodName="updateStudent">update t_student stu set stu.s_name=? where stu.s_name=?</updateOperation>
+	</update>
+
+	<selelct>
+		<queryOperation methodName="queryStudentByname">select *from t_student stu where stu.s_name=?</queryOperation>
+		<queryOperation methodName="queryStudent">select *from t_student</queryOperation>
+	　　　<queryOperation methodName="queryOffice">select *from t_office where office_isdel = 0 and storehouse_id_fk =?</queryOperation>
+	    <queryOperation methodName="queryAdminGoodsInfo">SELECT SUM(t_goods_number.goods_number) AS goods_number,t_goods.goods_name,t_goods.goods_id,t_user.user_name,t_barcode.barcode_id,t_barcode.barcode_validity,t_type.type_name FROM  t_goods LEFT OUTER JOIN t_type ON t_goods.type_id_fk = t_type.type_id LEFT OUTER JOIN t_barcode ON  t_goods.goods_id = t_barcode.goods_id_fk LEFT OUTER JOIN t_user ON t_barcode.user_id_fk = t_user.user_id LEFT OUTER JOIN t_goods_number ON t_goods.goods_id = t_goods_number.goods_id_fk GROUP BY(t_goods.goods_id)</queryOperation>
+	</selelct>
+</root>
